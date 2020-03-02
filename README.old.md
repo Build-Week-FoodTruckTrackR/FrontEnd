@@ -8,4 +8,6 @@
 3. once completed, cd into your project and yarn start
 4. add dependencies
 5. switch branch
-6. 
+6. visualize the component page needed for login form
+7. visualize the components needed for 2 types of signup forms : diner and operator
+8.
