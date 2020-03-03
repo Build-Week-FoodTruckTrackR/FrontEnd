@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-// import { axiosWithAuth } from "../utils/axiosWithAuth";
+import React, { useState } from "react";
+// import { Link } from "react-router-dom";
+
+
+import { axiosWithAuth } from "../util/axiosWithAuth";
 import FormInput from '../form-input/FormInput';
 import CustomButton from '../custom-button/CustomButton';
-import axios from 'axios';
 
-const DinerSignupForm = (props) => {
-
-    const [dinerSignup, setDinerSignup] = useState({
+const OperatorSignupForm = (props) => {
+    const [signup, setSignup] = useState({
         username: '',
         password: '',
-        favorite_trucks: [],
- 
+        trucks_owned: []
     });
 
     const handleChange = event => {
-        setDinerSignup({
-          ...dinerSignup,
+        setSignup({
+          ...signup,
           [event.target.name]: event.target.value
         });
       };
@@ -23,18 +23,18 @@ const DinerSignupForm = (props) => {
 
     const handleSubmit = event => {
         event.preventDefault();
-      axios
-        .post('68.183.138.134/diners/register', dinerSignup)
+      axiosWithAuth()
+        .post('register', signup)
   
         .then(response => {
           console.log("response", response);
   
           localStorage.setItem("token", response.data
           .payload);
-        //   props.history.push("dinerSignup");
+        //   props.history.push("signup");
         })
         .catch(error => {
-            console.log(`signup error: ${error}`);
+            console.log(`login error: ${error}`);
         });
     };
   
@@ -43,12 +43,13 @@ const DinerSignupForm = (props) => {
   
         <h3>SIGN UP</h3>
 
-        <p>Enter a username and password to create your account. </p>
+        <p>Enter a username and password to create your account. Your data is never sold or shared.</p>
+
         <form onSubmit={handleSubmit}>    
         <FormInput 
             type="text" 
             name="username" 
-            value={dinerSignup.username}
+            value={signup.username}
             label="username"
             handleChange={handleChange} 
             required
@@ -57,7 +58,7 @@ const DinerSignupForm = (props) => {
         <FormInput 
             type="password" 
             name="password" 
-            value={dinerSignup.password}
+            value={signup.password}
             label="password"
             handleChange={handleChange} 
             required
@@ -65,16 +66,15 @@ const DinerSignupForm = (props) => {
 
         <FormInput 
             type="integet" 
-            name="favorite_trucks" 
-            value={dinerSignup.favorite_trucks}
-            label="favorite_trucks"
+            name="trucks_owned" 
+            value={signup.trucks_owned}
+            label="trucks owned"
             handleChange={handleChange} 
             required
         />
   
         <div className="buttons">
-            <CustomButton type="submit">Create Account</CustomButton>
-            
+            <CustomButton type="submit">SIGN UP</CustomButton>
         </div> 
 
           </form>
@@ -83,4 +83,4 @@ const DinerSignupForm = (props) => {
     );
   }
 
-export default DinerSignupForm;  
+export default OperatorSignupForm;  
