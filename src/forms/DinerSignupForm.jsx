@@ -1,13 +1,15 @@
-import React from 'react';
-import { axiosWithAuth } from "../util/axiosWithAuth";
+import React, { useState } from 'react';
+// import { axiosWithAuth } from "../utils/axiosWithAuth";
 import FormInput from '../form-input/FormInput';
 import CustomButton from '../custom-button/CustomButton';
+import axios from 'axios';
 
 const DinerSignupForm = (props) => {
+
     const [dinerSignup, setDinerSignup] = useState({
         username: '',
         password: '',
-        favorite_trucks: [1],
+        favorite_trucks: [],
  
     });
 
@@ -21,8 +23,8 @@ const DinerSignupForm = (props) => {
 
     const handleSubmit = event => {
         event.preventDefault();
-      axiosWithAuth()
-        .post('register', dinerSignup)
+      axios
+        .post('68.183.138.134/diners/register', dinerSignup)
   
         .then(response => {
           console.log("response", response);
@@ -72,6 +74,7 @@ const DinerSignupForm = (props) => {
   
         <div className="buttons">
             <CustomButton type="submit">Create Account</CustomButton>
+            
         </div> 
 
           </form>
