@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import FormInput from '../form-input/FormInput';
 import CustomButton from '../custom-button/CustomButton';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const LoginForm = () => {
 
@@ -12,7 +13,15 @@ const LoginForm = () => {
 
     const handleSubmit = event => {
         event.preventDefault();
-    }
+        axiosWithAuth()
+        .post('login', login)
+        .then(response => {
+            console.log("response", response)
+        })
+        .catch(error => {
+            console.log(`login error: ${error}`);
+        });
+    };
 
     const handleChange = event => {
         setLogin({
