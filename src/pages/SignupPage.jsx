@@ -15,7 +15,7 @@ const SignupPage = () => {
                 <div className="buttons signup-buttons">
                     <CustomButton type="submit" onClick={() => history.push('/signupdiner')}> SIGN UP AS A DINER</CustomButton>
 
-                    <Route path="dinersignup" component= {DinerSignupForm}/>
+              
                     <CustomButton type="submit">SIGN UP AS AN OPERATOR</CustomButton>
                 </div>    
             </div>

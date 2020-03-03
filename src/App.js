@@ -11,7 +11,6 @@ import DinerSignupForm from './forms/DinerSignupForm';
 
 
 
-
 function App() {
   return (
     <div className="App">
