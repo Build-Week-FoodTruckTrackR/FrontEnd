@@ -9,8 +9,6 @@ const OperatorLoginForm = () => {
     const [login, setLogin] = useState({
         username: '',
         password: '',
-
-
     });
 
     const handleSubmit = event => {
