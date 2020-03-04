@@ -1,13 +1,14 @@
 import React from 'react';
 
-import LoginForm from '../forms/LoginForm';
+import DinerLoginForm from '../forms/DinerLoginForm';
+import OperatorLoginForm from '../forms/OperatorLoginForm';
 
 
 const LoginPage = () => {
     return (
             <div className="login-page">
-                <LoginForm />
-
+                <DinerLoginForm />
+                <OperatorLoginForm />
             </div>
        
     );

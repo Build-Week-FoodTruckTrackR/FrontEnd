@@ -4,7 +4,7 @@ import FormInput from '../form-input/FormInput';
 import CustomButton from '../custom-button/CustomButton';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-const LoginForm = () => {
+const DinerLoginForm = () => {
 
     const [login, setLogin] = useState({
         username: '',
@@ -65,4 +65,4 @@ const LoginForm = () => {
     );
 }
 
-export default LoginForm;
+export default DinerLoginForm;
