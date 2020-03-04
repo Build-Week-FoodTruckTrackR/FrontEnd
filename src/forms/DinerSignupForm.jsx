@@ -18,7 +18,7 @@ const DinerSignupForm = (props) => {
           ...dinerSignup,
           [event.target.name]: event.target.value
         });
-        // console.log("diners", dinerSignup);
+        
       };
 
 

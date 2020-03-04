@@ -8,6 +8,7 @@ import LoginPage from './pages/LoginPage';
 import './pages/login-page.scss';
 import SignupPage from './pages/SignupPage';
 import DinerSignupForm from './forms/DinerSignupForm';
+import OperatorSignupForm from './forms/OperatorSignupForm';
 
 
 
@@ -18,6 +19,7 @@ function App() {
        
          <Route path="/signuppage" component={SignupPage} />
          <Route path="/signupdiner" component={DinerSignupForm} />
+         <Route path="/signupoperator" component={OperatorSignupForm} />
           <Route path="/" component={LoginPage} />
         
        </Switch>
