@@ -8,15 +8,19 @@ const LoginForm = () => {
 
     const [login, setLogin] = useState({
         username: '',
-        password: ''
+        password: '',
+        "favorite_trucks": [1],
+        "longitude" : 3.234243,
+        "latitude": 100.23423
     });
 
     const handleSubmit = event => {
         event.preventDefault();
+        console.log('what is login', login);
         axiosWithAuth()
-        .post('login', login)
+        .post('diners/login', login)
         .then(response => {
-            console.log("response", response)
+            console.log("response from login post", response)
         })
         .catch(error => {
             console.log(`login error: ${error}`);

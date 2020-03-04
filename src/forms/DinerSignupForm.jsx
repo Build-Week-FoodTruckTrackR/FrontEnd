@@ -18,19 +18,22 @@ const DinerSignupForm = (props) => {
           ...dinerSignup,
           [event.target.name]: event.target.value
         });
+        // console.log("diners", dinerSignup);
       };
 
 
     const handleSubmit = event => {
         event.preventDefault();
+        console.log('what is registering', dinerSignup);
       axios
-        .post('68.183.138.134/diners/register', dinerSignup)
-  
+        .post('http://68.183.138.134/diners/register', dinerSignup)
+        
+
         .then(response => {
           console.log("response", response);
   
           localStorage.setItem("token", response.data
-          .payload);
+          .token);
         //   props.history.push("dinerSignup");
         })
         .catch(error => {
@@ -63,14 +66,14 @@ const DinerSignupForm = (props) => {
             required
         />
 
-        <FormInput 
+        {/* <FormInput 
             type="integet" 
             name="favorite_trucks" 
             value={dinerSignup.favorite_trucks}
             label="favorite_trucks"
             handleChange={handleChange} 
             required
-        />
+        /> */}
   
         <div className="buttons">
             <CustomButton type="submit">Create Account</CustomButton>
