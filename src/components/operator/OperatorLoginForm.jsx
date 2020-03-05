@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
-import FormInput from '../form-input/FormInput';
-import CustomButton from '../custom-button/CustomButton';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import FormInput from '../../form-input/FormInput';
+import CustomButton from '../../custom-button/CustomButton';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
-const OperatorLoginForm = () => {
+const OperatorLoginForm = (props) => {
 
     const [login, setLogin] = useState({
         username: '',
@@ -17,10 +17,13 @@ const OperatorLoginForm = () => {
         axiosWithAuth()
         .post('operators/login', login)
         .then(response => {
+            localStorage.setItem("token", response);
+            props.history.push("/login");
             console.log("response from login post", response)
         })
         .catch(error => {
-            console.log(`login error: ${error}`);
+            alert((error.message = "Invalid Username or Password"));
+            console.log('login error', error);
         });
     };
 

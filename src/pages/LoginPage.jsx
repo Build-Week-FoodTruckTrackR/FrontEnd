@@ -1,7 +1,7 @@
 import React from 'react';
 
-import DinerLoginForm from '../forms/DinerLoginForm';
-import OperatorLoginForm from '../forms/OperatorLoginForm';
+import DinerLoginForm from '../components/diner/DinerLoginForm';
+import OperatorLoginForm from '../components/operator/OperatorLoginForm';
 
 
 const LoginPage = () => {

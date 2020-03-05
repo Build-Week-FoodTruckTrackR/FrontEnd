@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import FormInput from '../form-input/FormInput';
-import CustomButton from '../custom-button/CustomButton';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import FormInput from '../../form-input/FormInput';
+import CustomButton from '../../custom-button/CustomButton';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 const DinerLoginForm = () => {
 
