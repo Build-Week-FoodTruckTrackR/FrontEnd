@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import FormInput from '../../form-input/FormInput';
 import CustomButton from '../../custom-button/CustomButton';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
+
+import OperatorDashboard from '../operator/OperatorDashboard';
 
 const OperatorLoginForm = (props) => {
 
@@ -22,7 +25,7 @@ const OperatorLoginForm = (props) => {
             console.log("response from login post", response)
         })
         .catch(error => {
-            alert((error.message = "Invalid Username or Password"));
+            // alert((error.message = "Invalid Username or Password"));
             console.log('login error', error);
         });
     };
@@ -58,7 +61,9 @@ const OperatorLoginForm = (props) => {
                 required />
 
             <div className="buttons">
-            <CustomButton type="submit">SIGN IN</CustomButton>
+            <CustomButton type="submit">
+            <Link to={OperatorDashboard}>
+            </Link>SIGN IN</CustomButton>
             </div>    
         </form>
         </div>

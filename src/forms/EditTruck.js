@@ -7,6 +7,7 @@ import {editTrucks} from '../actions';
 const EditTruck = (props) => {
     const [editing, setEditing] = useState(false);
     const [menuItems, setMenuItems] = useState([...props.location.state.truck.menu]);
+    
     const {handleSubmit, register, errors} = useForm();
     console.log(props);
     
@@ -32,9 +33,10 @@ const EditTruck = (props) => {
     const onSubmit = values => {
         let data = {
             name: values.name ? values.name : props.location.state.truck.name,
-            imageUrl: values.imageUrl ? values.imageUrl : props.location.state.truck.imageUrl,
-            cuisine: values.cuisine ? values.cuisine : props.location.state.truck.cuisine,
             description: values.description ? values.description : props.location.state.truck.description,
+            imageUrl: values.imageUrl ? values.imageUrl : props.location.state.truck.imageUrl,
+            price: values.price ? values.price : props.location.state.truck.price,
+            customerRating: values.customerRating ? values.customerRating : props.location.state.truck.customerRating,
             menu: menuItems ? menuItems : props.location.state.truck.menu
         }
         props.editTrucks(data, props.match.params.id);
@@ -46,12 +48,15 @@ const EditTruck = (props) => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <label>Name: 
                     <input name="name" placeholder={props.location.state.truck.name} ref={register} /></label>
+                <label>Description: 
+                    <textarea name="description" ref={register} placeholder={props.location.state.truck.description} /></label>    
                 <label>Image: 
                     <input name="imageUrl" placeholder={props.location.state.truck.imageUrl} ref={register} /></label>
-                <label>Name: 
-                    <input name="cuisine"  placeholder={props.location.state.truck.cuisine} ref={register} /></label>
-                <label>Description: 
-                    <textarea name="description" ref={register} placeholder={props.location.state.truck.description} /></label>
+                <label>Price: 
+                    <input name="price"  placeholder={props.location.state.truck.price} ref={register} /></label>
+                <label>Customer Rating: 
+                    <input name="rating"  placeholder={props.location.state.truck.rating} ref={register} /></label>
+
                 
                 {!editing && <button onClick={()=> setEditing(true)} > Edit Menu </button>}
                 {editing &&
