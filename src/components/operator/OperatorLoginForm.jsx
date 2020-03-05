@@ -1,25 +1,32 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import FormInput from '../form-input/FormInput';
-import CustomButton from '../custom-button/CustomButton';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import FormInput from '../../form-input/FormInput';
+import CustomButton from '../../custom-button/CustomButton';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
-const LoginForm = () => {
+import OperatorDashboard from '../operator/OperatorDashboard';
+
+const OperatorLoginForm = (props) => {
 
     const [login, setLogin] = useState({
         username: '',
-        password: ''
+        password: '',
     });
 
     const handleSubmit = event => {
         event.preventDefault();
+        console.log('what is login', login);
         axiosWithAuth()
-        .post('login', login)
+        .post('operators/login', login)
         .then(response => {
-            console.log("response", response)
+            localStorage.setItem("token", response);
+            props.history.push("/login");
+            console.log("response from login post", response)
         })
         .catch(error => {
-            console.log(`login error: ${error}`);
+            // alert((error.message = "Invalid Username or Password"));
+            console.log('login error', error);
         });
     };
 
@@ -33,8 +40,8 @@ const LoginForm = () => {
     
     return (
         <div className="sign-in">
-        <h2>Already have an account?</h2>
-        <span>Sign in with your email and password.</span>
+        <h2>Sign in as an Operator..</h2>
+        {/* <span>Sign in with your email and password.</span> */}
 
         <form onSubmit={handleSubmit}>
             <FormInput 
@@ -54,11 +61,13 @@ const LoginForm = () => {
                 required />
 
             <div className="buttons">
-            <CustomButton type="submit">SIGN IN</CustomButton>
+            <CustomButton type="submit">
+            <Link to={OperatorDashboard}>
+            </Link>SIGN IN</CustomButton>
             </div>    
         </form>
         </div>
     );
 }
 
-export default LoginForm;
+export default OperatorLoginForm;

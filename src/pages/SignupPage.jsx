@@ -1,9 +1,9 @@
 import React from 'react';
-import { Route, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import './signup-page.scss';
 import CustomButton from '../custom-button/CustomButton';
-import DinerSignupForm from '../forms/DinerSignupForm';
+// import DinerSignupForm from '../forms/DinerSignupForm';
 
 const SignupPage = () => {
     const history = useHistory();
@@ -16,7 +16,7 @@ const SignupPage = () => {
                     <CustomButton type="submit" onClick={() => history.push('/signupdiner')}> SIGN UP AS A DINER</CustomButton>
 
               
-                    <CustomButton type="submit">SIGN UP AS AN OPERATOR</CustomButton>
+                    <CustomButton type="submit" onClick={() => history.push('/signupoperator')}>SIGN UP AS AN OPERATOR</CustomButton>
                 </div>    
             </div>
 
