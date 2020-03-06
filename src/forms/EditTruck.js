@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
 import {connect} from 'react-redux';
-import {editTrucks} from '../actions';
+import {editTrucks} from '../actions/trucks';
 
 
 const EditTruck = (props) => {
     const [editing, setEditing] = useState(false);
     const [menuItems, setMenuItems] = useState([...props.location.state.truck.menu]);
     
-    const {handleSubmit, register, errors} = useForm();
+    const {handleSubmit, register} = useForm();
     console.log(props);
     
     

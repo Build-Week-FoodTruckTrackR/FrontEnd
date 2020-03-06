@@ -1,6 +1,8 @@
 import React from 'react';
 
 import { Link } from 'react-router-dom';
+// import AddTruckForm from './AddTruckForm';
+import EditTruck from '../../forms/EditTruck';
 
 const OperatorDashboard = () => {
     return(
@@ -10,7 +12,7 @@ const OperatorDashboard = () => {
             {/* truck card with upload truck image */}
            </div>
 
-            <Link>
+            <Link to="/add a truck" component={EditTruck} >
             <button type="submit">Add a truck</button>
             </Link>
 

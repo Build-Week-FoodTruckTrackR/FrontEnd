@@ -76,3 +76,5 @@ const UpdateTruckForm = (props) => {
         </div>
     )
 }
+
+export default UpdateTruckForm;
