@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import FormInput from '../../form-input/FormInput';
 import CustomButton from '../../custom-button/CustomButton';
@@ -7,8 +8,10 @@ import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 import OperatorDashboard from '../operator/OperatorDashboard';
 
-const OperatorLoginForm = (props) => {
 
+
+const OperatorLoginForm = (props) => {
+    const history = useHistory();
     const [login, setLogin] = useState({
         username: '',
         password: '',
@@ -20,8 +23,8 @@ const OperatorLoginForm = (props) => {
         axiosWithAuth()
         .post('operators/login', login)
         .then(response => {
-            localStorage.setItem("token", response);
-            props.history.push("/login");
+            localStorage.setItem("token", response.data.token);
+            history.push('/operatordashboard');
             console.log("response from login post", response)
         })
         .catch(error => {
