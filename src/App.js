@@ -7,6 +7,7 @@ import './App.css';
 import Header from './components/navigation/Header';
 import LoginPage from './pages/LoginPage';
 import './pages/login-page.scss';
+import OperatorDashboard from './components/operator/OperatorDashboard';
 import SignupPage from './pages/SignupPage';
 import DinerSignupForm from './components/diner/DinerSignupForm';
 import OperatorSignupForm from './components/operator/OperatorSignupForm';
@@ -18,7 +19,7 @@ function App() {
     <div className="App">
       <Header />
        <Switch>
-       
+        <Route path='/operatordashboard' component={OperatorDashboard} />
          <Route path="/signuppage" component={SignupPage} />
          <Route path="/signupdiner" component={DinerSignupForm} />
          <Route path="/signupoperator" component={OperatorSignupForm} />
